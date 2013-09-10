@@ -35,5 +35,38 @@ def generateRandomPassword(minlength=8, maxlength=12, digits=True):
             pw += random.choice(string.ascii_letters)
     return pw
 
+def modifyStringWithSome1337(string, ch=1):
+    '''takes a string and returns a modified (more 1337) string
+
+    the higher ch is, the less likely it is that a character will be changed
+    0 = no change
+    1 = 50/50 chance of a character being changed
+    20 = character very unlikely to be changed
+    
+    A whitespace in the string will always be replaced with a forward slash
+    in the returned modified string
+    '''
+    modifiedString = ''
+    for char in string:
+        change = random.randint(0, ch)
+        if char == ' ':
+            char = '/'
+        elif change == 1:
+            if char.lower() == 'a':
+                char = '4'
+            elif char.lower() == 'o':
+                char = '0'
+            elif char.lower() == 'e':
+                char = '3'
+            elif char.lower() == 'l':
+                char = '1'
+            elif char.lower() == 's':
+                char = '5'
+            elif char.lower() == 't':
+                char = '7'
+        modifiedString += char
+    return modifiedString
+
 if __name__ == "__main__":
     print(generateRandomPassword())
+    print(modifyStringWithSome1337('Abracadabra Otto Elite Starpower Chevy Camaro SS', 20))
