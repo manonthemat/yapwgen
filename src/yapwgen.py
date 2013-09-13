@@ -20,10 +20,11 @@ Copyright 2013 Matthias Sieber
 import random
 import string
 
+
 def generateRandomPassword(minlength=8, maxlength=12, digits=True):
     '''generates a random password'''
     pw = ''
-    length = random.randrange(minlength, maxlength+1)
+    length = random.randrange(minlength, maxlength + 1)
     for i in range(0, length):
         if digits == True:
             num = random.choice([0, 1])
@@ -35,6 +36,7 @@ def generateRandomPassword(minlength=8, maxlength=12, digits=True):
             pw += random.choice(string.ascii_letters)
     return pw
 
+
 def modifyStringWithSome1337(string, ch=1):
     '''takes a string and returns a modified (more 1337) string
 
@@ -42,13 +44,13 @@ def modifyStringWithSome1337(string, ch=1):
     0 = no change
     1 = 50/50 chance of a character being changed
     20 = character very unlikely to be changed
-    
+
     A whitespace in the string will always be replaced with a forward slash
     in the returned modified string
     '''
     modifiedString = ''
     for char in string:
-        change = random.randint(0, ch)
+        change = random.randint(0, int(ch))
         if char == ' ':
             char = '/'
         elif change == 1:
@@ -69,4 +71,4 @@ def modifyStringWithSome1337(string, ch=1):
 
 if __name__ == "__main__":
     print(generateRandomPassword())
-    print(modifyStringWithSome1337('Abracadabra Otto Elite Starpower Chevy Camaro SS', 20))
+    print(modifyStringWithSome1337('Abracadabra Otto Elite Starpower Chevy Camaro SS', '20'))
